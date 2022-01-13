@@ -1,0 +1,7 @@
+# The file containing environment variables 
+.env
+# Ignore the Miscellaneous directory
+/Misc
+# Ignore Node Modules and Build Files
+/node_modules
+/build

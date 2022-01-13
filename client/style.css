@@ -1,0 +1,681 @@
+html,
+body {
+  font-family: Arial;
+  
+  margin: 0px;
+  padding: 0px;
+  background-color: #1a1a1a;
+}
+
+h1, .enable-button, .asset-interface {
+  margin: 40px auto;
+}
+
+h2 {
+    font-size: 32px;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+h3 { 
+    font-size: 28px;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+   
+}
+.unemployment-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0 var(--gap);
+    margin: 0 0 var(--gap);
+    color: #FFFFFF;
+    border: 3px solid #676767;
+    background-color: #002641;
+    height: 96px;
+}
+
+.header-spacer {
+    height: 106px;
+}
+.balance-info {
+    position: absolute;
+    display: flex;
+    left: 10px;
+    top: 10px;
+    border: 3px dashed #979797;
+    background-color: #002641;
+    height: 48px;
+    width: 300px;
+    margin-left: 10px;
+    padding: 6px;
+}
+
+.wallet-header {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 3px dashed #979797;
+    background-color: #002641;
+    color: #FFFFFF;
+    height: 48px;
+    width: 300px;
+    margin-right: 10px;
+    padding: 6px;
+  }
+
+.middle-header {
+    display: grid;
+    grid-template-rows: .5fr .5fr 1.5fr;
+    border: 3px solid #676767;
+    background-color: #005FB2;
+    max-height: 550px;
+    color: #FFFFFF;
+}
+
+.header-title {
+    margin-top: 10px;
+    color: #37DD60;
+    font-weight: 900;
+}
+
+.process-diagram{
+    display: grid;
+    grid-template-rows: 150px 100px;
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.process-image {
+    display: flex;
+    justify-content: center;
+    margin-left: 12%;
+    width: 80%;
+}
+
+.important-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #882345;
+    color: #FFFFFF;
+    min-height: 85px;
+    margin-top: 0;
+    border: 3px solid #676767;
+} 
+
+.landing-page {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.page-link {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.pagelinks {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0%;
+    width: 100%;
+    min-height: 60px;
+    
+}
+
+.page-link button {
+    border-style: solid;
+    border-color: #979797;
+    border-radius: 3px;
+    padding: 15px 32px;
+    background-color: #37DD60;
+    font-size: medium;
+    font-weight: 900;
+}
+.page-link button:hover {
+    background-color: rgb(87, 134, 221);
+}
+
+.input-body {
+    display: grid;
+    grid-template-columns: 350px 100%;
+    min-height: 400px;
+    margin-left: 12.5%;
+}
+
+.tab {
+    border: 2px solid rgb(200, 200, 200);
+    background-color: rgb(224, 224, 224);
+    margin-top: 12px;
+}
+
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: rgb(3, 3, 3);
+    font-size: medium;
+    font-weight: 900;
+    padding: 22px 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: rgb(87, 134, 221);
+}
+
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+}
+  
+.tab div {
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+}
+
+.input-area {
+    background-color: #3a3a3a;
+    border: 2px solid rgb(200, 200, 200);
+    width: 60%;
+    margin: 12px;
+   
+}
+
+.input-form {
+    display: flex;
+    height: 100%;
+}
+
+.connect-area {
+    width: 100%;
+    background-color: #005FB2;
+    max-height: 800px;
+}
+
+.enable-button {
+    border-style: solid;
+    border-color: #979797;
+    border-radius: 3px;
+    padding: 15px 32px;
+    background-color: #37DD60;
+    color: #FFF;
+    font-weight: 700;
+    position: relative;
+    height: 50px;
+    top: -80px;
+}
+  
+.enable-button:hover {
+    background-color: #0494fb;
+}
+
+.connect-wallet {
+    padding: 8px;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    border: 3px solid #979797;
+    border-radius: 8px;
+    align-content: center;
+    gap: 4px;
+
+}
+
+.funds-file {
+    padding: 8px;
+    width: 100%;
+    height: auto;
+    background-color: rgb(224, 224, 224);
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+    grid-template-rows: 1fr .25fr 1fr 1fr 1fr .25fr 1fr;
+    border: 3px solid #979797;
+    border-radius: 8px;
+    align-content: center;
+    gap: 4px;
+}
+
+.funds-file label {
+    font-weight: 900;
+}
+.funds-file .row1-title {
+    text-align: center;
+    height: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #E1DE62;
+    color: #FFFFFF;
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    padding-top: 15px;
+    border: 2px solid #979797;
+}
+
+.funds-file .row2-spacer {
+    grid-column: 1 / span 3;
+    grid-row: 7;
+}
+
+.funds-file .row3-label {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    
+}
+
+.funds-file .row3-input {
+    grid-column: 2;
+    grid-row: 3;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+}
+
+.funds-file .row4-label {
+    grid-column: 1;
+    grid-row: 4;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+
+}
+
+.funds-file .row4-input {
+    grid-column: 2;
+    grid-row: 4;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+
+}
+
+.funds-file .row5-label {
+    grid-column: 1;
+    grid-row: 5;
+    padding: 6px;
+    margin: auto;
+    width: 100%;
+}
+
+.funds-file .row5-input {
+    grid-column: 2;
+    grid-row: 5;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+}
+
+.funds-file .row6-spacer {
+    grid-column: 1 / span 3;
+    grid-row: 6;
+}
+
+.funds-file .row7-button {
+    grid-column: 1 / span 3;
+    grid-row: 7;
+    margin-right: auto;
+    margin-left: auto;
+    width: 30%;
+    padding: 12px;
+    border: 2px solid #979797;
+    border-radius: 9px;
+    background-color: #E1DE62;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: 900;
+}
+
+.claim-file {
+    padding: 8px;
+    width: 100%;
+    background-color: rgb(224, 224, 224);
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+    grid-template-rows: 1fr .25fr 1fr 1fr 1fr 1fr .25fr 1fr;
+    border: 3px solid #979797;
+    border-radius: 8px;
+    align-content: center;
+    gap: 4px;
+}
+
+.claim-file label {
+    font-weight: 900;
+}
+.claim-file .row1-title {
+    text-align: center;
+    height: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #E1DE62;
+    color: #FFFFFF;
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    padding-top: 15px;
+    border: 2px solid #979797;
+}
+
+.claim-file .row2-spacer {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+}
+
+.claim-file .row3-label {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    
+}
+
+.claim-file .row3-input {
+    grid-column: 2;
+    grid-row: 3;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+}
+
+.claim-file .row4-label {
+    grid-column: 1;
+    grid-row: 4;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+
+}
+
+.claim-file .row4-input {
+    grid-column: 2;
+    grid-row: 4;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+
+}
+
+.claim-file .row5-label {
+    grid-column: 1;
+    grid-row: 5;
+    padding: 6px;
+    margin: auto;
+    width: 100%;
+}
+
+.claim-file .row5-input {
+    grid-column: 2;
+    grid-row: 5;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+}
+
+.claim-file .row6-label {
+    grid-column: 1;
+    grid-row: 6;
+    padding: 6px;
+    margin: auto;
+    width: 100%;
+}
+
+.claim-file .row6-input {
+    grid-column: 2;
+    grid-row: 6;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90%;
+}
+
+.claim-file .row2-spacer {
+    grid-column: 1 / span 3;
+    grid-row: 7;
+}
+
+.claim-file .row8-button {
+    grid-column: 1 / span 3;
+    grid-row: 8;
+    margin-right: auto;
+    margin-left: auto;
+    width: 30%;
+    padding: 12px;
+    border: 2px solid #979797;
+    border-radius: 9px;
+    background-color: #E1DE62;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: 900;
+}
+
+.termination-file {
+    padding: 8px;
+    width: 100%;
+    height: auto;
+    background-color: rgb(224, 224, 224);
+    display: grid;
+    grid-template-columns: 350px 100%x;
+    grid-template-rows: 1fr .25fr 1fr 1fr 1fr 1fr 1fr 1fr .25fr 1fr;
+    border: 3px solid #979797;
+    border-radius: 8px;
+    align-content: center;
+    gap: 4px;
+}
+
+.termination-file label {
+    font-weight: 900;
+}
+.termination-file .row1-title {
+    text-align: center;
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #E1DE62;
+    color: #FFFFFF;
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    padding-top: 15px;
+    border: 2px solid #979797;
+}
+
+.termination-file .row2-spacer {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+}
+
+.termination-file .row3-label {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    
+}
+
+.termination-file .row3-input {
+    grid-column: 2;
+    grid-row: 3;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    width: 95%;
+}
+
+.termination-file .row4-label {
+    grid-column: 1;
+    grid-row: 4;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+
+}
+
+.termination-file .row4-input {
+    grid-column: 2;
+    grid-row: 4;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    width: 95%;
+
+}
+
+.termination-file .row5-label {
+    grid-column: 1;
+    grid-row: 5;
+    padding: 6px;
+    margin: auto;
+    width: 100%;
+}
+
+.termination-file .row5-input {
+    grid-column: 2;
+    grid-row: 5;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    width: 95%;
+}
+
+.termination-file .row6-label {
+    grid-column: 1;
+    grid-row: 6;
+    padding: 6px;
+    margin: auto;
+    width: 100%;
+}
+
+.termination-file .row6-input {
+    grid-column: 2;
+    grid-row: 6;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    width: 95%;
+}
+
+.termination-file .row7-label {
+    grid-column: 1;
+    grid-row: 7;
+    padding: 6px;
+    margin: auto;
+    width: 100%;
+}
+
+.termination-file .row7-input {
+    grid-column: 2;
+    grid-row: 7;
+    text-align: left;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    width: 95%;
+}
+
+.termination-file .row8-label {
+    grid-column: 1;
+    grid-row: 8;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.termination-file .row8-input {
+    grid-column: 2;
+    grid-row: 8;
+    display: flex;
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 100%;
+    height: 95%;
+}
+
+.select {
+    width: 100%;
+    align-self: flex-end;
+}
+#display-term-date {
+    padding: 6px;
+    display: flex;
+    align-self: flex-start;
+    width: 100%;
+}
+
+.termination-file .row9-spacer {
+    grid-column: 1 / span 3;
+    grid-row: 9;
+}
+
+.termination-file .row10-button {
+    grid-column: 1 / span 3;
+    grid-row: 10;
+    margin-right: auto;
+    margin-left: auto;
+    width: 30%;
+    padding: 12px;
+    border: 2px solid #979797;
+    border-radius: 9px;
+    background-color: #E1DE62;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: 900;
+}
+
+.claim-interface row8-button:hover {
+    background-color: #00ffb3;
+}
+
+
+  

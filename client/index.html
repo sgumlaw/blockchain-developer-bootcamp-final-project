@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Unemployment Administration</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <link href="./dp-light.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <header class="unemployment-header">
+
+        <div class="balance-info">
+            <label style="margin-top: 4px;">Eth Balance:</label>
+            <div id="mm-balance" style="margin-left: 4px; margin-top: 4px"></div>
+            
+        </div>
+
+        <h1 class="header-title">FiscalE</h1>
+
+        <div class="wallet-header">
+            <div id="mm-detected" style="padding: 2px;"></div>
+            <div id="mm-account" style="padding: 2px;"></div> 
+        </div>
+        
+    </header>
+
+    <div class="middle-header">
+        <div class="header-spacer"></div>
+        <h3 class="subheader-title">A System for Filing Unemployment and Payment of Claims</h3>
+        <div class="process-diagram">
+            <img src="./images/MetaMask.png" alt="User Process Diagram" class="process-image" id="processImage">
+            <button id="mm-connect" class="enable-button">Connect to MetaMask</button>
+        </div>
+    </div>
+
+    <div class="important-header">
+        <label>IMPORTANT: Please read all of the information on this page before filling a claim</label>
+    </div>
+    
+    <div class="landing-page">
+        <div class="page-link">
+            <button class="pagelinks" id="employer-page" onclick="openInput(event, 'Employers')">Employers</button>
+        </div>
+        <div class="page-link">
+            <button class="pagelinks" id="claimant-page" onclick="openInput(event, 'Claimants')">Claimants</button>
+        </div>
+        <div class="page-link">
+            <button class="pagelinks" id="lps-page" onclick="openInput(event, 'LPs')">Liquidity Providers</button>
+        </div>
+    </div>
+
+    <div class="user-forms">
+        <div class="input-body">
+            <div class="">
+                <div class="tab inputDisplay" id="Employers" style="display:none">
+                    <button class="tablinks" onclick="openTab(event, 'Employer')">Employer Registration</button>
+                    <button class="tablinks" onclick="openTab(event, 'Termination')">Record Employee Terminations</button>
+                    <button class="tablinks" onclick="openTab(event, 'Deposit')">Make Deposit</button>
+                    <button class="tablinks" onclick="openTab(event, 'Claims')">Retrieve Active Claims</button>
+                    <button class="tablinks" onclick="openTab(event, 'History')">Retrieve Claimant Payment History</button>
+                    <button class="tablinks" onclick="openTab(event, 'Reserves')">Retrieve Current Reserve Balance</button>
+                    <button class="tablinks" onclick="openTab(event, 'TaxRate')">Retrieve Current Tax Rate</button>
+                </div>
+
+                <div class="tab inputDisplay" id="Claimants" style="display:none">
+                    <button class="tablinks" onclick="openTab(event, 'Eligibility')">File Claim</button>
+                    <button class="tablinks" onclick="openTab(event, 'Payment')">Request Payment</button>
+                    <button class="tablinks" onclick="openTab(event, 'Withdraw')">Withdraw</button>
+                    <button class="tablinks" onclick="openTab(event, 'History')">Retrieve Payment History</button>
+                </div>
+
+                <div class="tab inputDisplay" id="LPs" style="display:none">
+                    <button class="tablinks" onclick="openTab(event, 'LPs')">Liquidity Provider Registration</button>
+                    <button class="tablinks" onclick="openTab(event, 'Supply')">Supply</button>
+                    <button class="tablinks" onclick="openTab(event, 'Redeem')">Redeem</button>
+                    <button class="tablinks" onclick="openTab(event, 'History')">Retrieve Liquidity Provider History</button>
+                </div>
+
+            </div>
+
+            <div class="input-area">
+                <div class="input-form">
+                    <div id="Employer" class="connect-area tabDisplay" style="display:none">
+                        <div class="claim-file" >
+                            <h2 class="row1-title">Register New Business</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Business Name</label>
+                            <input class="row3-input" id="business-name" type="text" placeholder="Input Business Name"/>
+                            <label class="row4-label">Business Address</label>
+                            <input class="row4-input" id="business-address" type="text" placeholder="Input Business Address"></input>
+                            <label class="row5-label">Employer Wallet</label>
+                            <input class="row5-input" id="business-wallet" type="text" placeholder="Input Employer Wallet Address" />
+                            <label class="row6-label">State ID</label>
+                            <input class="row6-input" id="state-id" type="text" placeholder="Input State ID" />
+                            <div class="row7-spacer"></div>
+                            <button class="row8-button" id="sc-employer-button">Submit</button>
+                        </div> 
+                    </div>
+
+                    <div id="Deposit" class="connect-area tabDisplay" style="display:none">
+                        <div class="funds-file" >
+                            <h2 class="row1-title">Make Deposit</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Business Name</label>
+                            <input class="row3-input" id="deposit-name" type="text" placeholder="Input Business Name"/>
+                            <label class="row4-label">Business Wallet</label>
+                            <input class="row4-input" id="deposit-wallet" type="text" placeholder="Input Employer Wallet Address" />
+                            <label class="row5-label">Deposit Amount</label>
+                            <input class="row5-input" id="deposit-amount" type="number" placeholder="Deposit" />
+                            <div class="row6-spacer"></div>
+                            <button class="row7-button" id="sc-deposit-button">Submit</button>
+                        </div>
+                    </div>  
+                    
+                    <div id="Termination" class="connect-area tabDisplay" style="display:none">
+                        <div class="termination-file" >
+                            <h2 class="row1-title">Record Employee Terminations</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Employee Name</label>
+                            <input class="row3-input" id="employee-name" type="text" placeholder="Input Employee Name"/>
+                            <label class="row4-label">Employee Address</label>
+                            <input class="row4-input" id="employee-address" type="text" placeholder="Input Employee Address"></input>
+                            <label class="row5-label">Employee Wallet</label>
+                            <input class="row5-input" id="employee-wallet" type="text" placeholder="Input Employee Wallet Address" />
+                            <label class="row6-label">Weekly Pay</label>
+                            <input class="row6-input" id="employee-wage" type="text" placeholder="Input Weekly Pay" />
+                            <label class="row7-label">Termination Reason</label>
+                            <div class="row7-input">
+                                <select class="select" id="termination-reason">
+                                    <option value=1>LaidOff</option>
+                                    <option value=2>Fired</option>
+                                    <option value=3>Quit</option>
+                                </select>
+                            </div>
+                            <div id="termination-date" class="row8-label"></div>
+                            <div class="row8-input"> 
+                                <input id="display-term-date"></input>
+                            </div>
+                            <div class="row9-spacer"></div>
+                            <button class="row10-button" id="sc-termination-button">Submit</button>
+                        </div> 
+                    </div>
+
+                    <div id="Eligibility" class="connect-area tabDisplay" style="display:none">
+                        <div class="claim-file" >
+                            <h2 class="row1-title">Check Eligibility</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Full Name</label>
+                            <input class="row3-input" id="claimant-name" type="text" placeholder="Input Your Name" />
+                            <label class="row4-label">Employer Name</label>
+                            <input class="row4-input" id="claimant-employer" type="text" placeholder="Input Employer Name"></input>
+                            <label class="row5-label">Employer Wallet</label>
+                            <input class="row5-input" id="employer-wallet" type="text" placeholder="Input Employer Wallet Address" />
+                            <label class="row6-label">Weekly Pay</label>
+                            <input class="row6-input" id="claimant-wage" type="text" placeholder="Input Weekly Pay" />
+                            <div class="row7-spacer"></div>
+                            <button class="row8-button" id="sc-eligibility-button">Verify</button>
+                        </div> 
+                    </div>
+            
+                    <div id="Payment" class="connect-area tabDisplay" style="display:none">
+                        <div class="claim-file" >
+                            <h2 class="row1-title">Request Payment</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Full Name</label>
+                            <label class="row3-input" id="payee-name"/></label>
+                            <label class="row4-label">Employer Name</label>
+                            <label class="row4-input" id="payee-employer" ></label>
+                            <label class="row5-label">Employer Wallet</label>
+                            <label class="row5-input" id="payor-wallet" /></label>
+                            <label class="row6-label">Weekly Pay</label>
+                            <label class="row6-input" id="weekly-wage" /></label>
+                            <div class="row7-spacer"></div>
+                            <button class="row8-button" id="sc-payment-button">Request</button>
+                        </div> 
+                    </div>
+
+                    <div id="Withdraw" class="connect-area tabDisplay" style="display:none">
+                        <div class="funds-file" >
+                            <h2 class="row1-title">Withdraw</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Full Name</label>
+                            <label class="row3-input" id="withdraw-name"/></label>
+                            <label class="row4-label">Wallet Address</label>
+                            <label class="row4-input" id="withdraw-wallet" /></label>
+                            <label class="row5-label">Withdraw Amount</label>
+                            <input class="row5-input" id="withdraw-amount" type="number" placeholder="Withdraw Amount"/></input>
+                            <div class="row6-spacer"></div>
+                            <button class="row7-button" id="sc-withdraw-button">Withdraw</button>
+                        </div> 
+                    </div>
+                </div>
+
+                <!-- <div class="input-form">
+                    <div id="Eligibility" class="connect-area tabDisplay" style="display:none">
+                        <div class="claim-file" >
+                            <h2 class="row1-title">Check Eligibility</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Full Name</label>
+                            <input class="row3-input" id="claimant-name" type="text" placeholder="Input Your Name" />
+                            <label class="row4-label">Employer Name</label>
+                            <label class="row6-label">Weekly Pay</label>
+                            <input class="row6-input" id="salary" type="text" placeholder="Input Weekly Pay" />
+                            <input class="row4-input" id="employer-name" type="text" placeholder="Input Employer Name"></input>
+                            <label class="row5-label">Employer Wallet</label>
+                            <input class="row5-input" id="employer-wallet" type="text" placeholder="Input Employer Wallet Address" />
+                            <div class="row7-spacer"></div>
+                            <button class="row8-button" id="ss-input-button">Submit</button>
+                        </div> 
+                    </div> -->
+                    
+                    <!-- <div id="Wallet" class="connect-area tabDisplay" style="display:none">
+                        <div class="connect-wallet" >
+                            <h2>Connect To Your Wallet</h2>
+                            <button id="mm-connect-claimant" class="enable-button">Connect to MetaMask</button>
+                        </div>  
+                    </div> -->
+            
+                    <!-- <div id="File" class="connect-area tabDisplay" style="display:none">
+                        <div class="claim-file" >
+                            <h2 class="row1-title">File Claim</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Full Name</label>
+                            <input class="row3-input" id="file-name" type="text" placeholder="Input Your Name" />
+                            <label class="row4-label">Employer Name</label>
+                            <input class="row4-input" id="payor-name" type="text" placeholder="Input Employer Name"></input>
+                            <label class="row5-label">Employer Wallet</label>
+                            <input class="row5-input" id="payor-wallet" type="text" placeholder="Input Employer Wallet Address" />
+                            <label class="row6-label">Weekly Pay</label>
+                            <input class="row6-input" id="salary" type="text" placeholder="Input Weekly Pay" />
+                            <div class="row7-spacer"></div>
+                            <button class="row8-button" id="ss-input-button">Submit</button>
+                        </div> 
+                    </div> 
+                    </div> -->
+                
+        
+                <!-- <div class="input-form">
+                    <div id="Eligibility" class="connect-area tabDisplay" style="display:none">
+                        <div class="claim-file" >
+                            <h2 class="row1-title">Check Eligibility</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Full Name</label>
+                            <input class="row3-input" id="claimant-name" type="text" placeholder="Input Your Name" />
+                            <label class="row4-label">Employer Name</label>
+                            <label class="row6-label">Weekly Pay</label>
+                            <input class="row6-input" id="salary" type="text" placeholder="Input Weekly Pay" />
+                            <input class="row4-input" id="employer-name" type="text" placeholder="Input Employer Name"></input>
+                            <label class="row5-label">Employer Wallet</label>
+                            <input class="row5-input" id="employer-wallet" type="text" placeholder="Input Employer Wallet Address" />
+                            <div class="row7-spacer"></div>
+                            <button class="row8-button" id="ss-input-button">Submit</button>
+                        </div> 
+                    </div> -->
+
+            
+                    <!-- <div id="File" class="connect-area tabDisplay" style="display:none">
+                        <div class="claim-file" >
+                            <h2 class="row1-title">File Claim</h2>
+                            <div class="row2-spacer"></div>
+                            <label class="row3-label">Full Name</label>
+                            <input class="row3-input" id="claimant-name" type="text" placeholder="Input Your Name" />
+                            <label class="row4-label">Employer Name</label>
+                            <input class="row4-input" id="employer-name" type="text" placeholder="Input Employer Name"></input>
+                            <label class="row5-label">Employer Wallet</label>
+                            <input class="row5-input" id="employer-wallet" type="text" placeholder="Input Employer Wallet Address" />
+                            <label class="row6-label">Weekly Pay</label>
+                            <input class="row6-input" id="salary" type="text" placeholder="Input Weekly Pay" />
+                            <div class="row7-spacer"></div>
+                            <button class="row8-button" id="ss-input-button">Submit</button>
+                        </div> 
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>   
+<script src="app.js"></script>
+<script defer src="datepicker.js"></script>
+</body>
+
+</html>
