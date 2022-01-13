@@ -4,8 +4,12 @@
 ### Deployed Front-End URL: 
 
 
-### How to run this project locally:
-
+### Steps to run this project locally:
+- `truffle test`
+- Send ETH to local wallet
+- `cd client && npm start`
+- Open local ui from `http://localhost:3000`
+- Make sure your Metamask localhost network is in port `7545`
 
 ### Screencast link
 
