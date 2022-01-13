@@ -1069,7 +1069,7 @@ function openInput(select_event, buttonSelect) {
 	}                                                                                                                    
 
 	if (buttonSelect == "Employers") {
-		t.src = "./images/EmployersProcess.png";
+		t.src = "./client/images/EmployersProcess.png";
 		
 		console.log("Employer Button: ", e)
 		e.style.backgroundColor = "rgb(87, 134, 221)"
@@ -1080,7 +1080,7 @@ function openInput(select_event, buttonSelect) {
 		l.style.color = "rgb(3, 3, 3)"
 	}
 	else if (buttonSelect == "Claimants") {
-		t.src = "./images/claimsProcess.png";
+		t.src = "./client/images/claimsProcess.png";
 		e.style.backgroundColor = "#37DD60"
 		e.style.color = "rgb(3, 3, 3)"
 		c.style.backgroundColor = "rgb(87, 134, 221)"
@@ -1089,7 +1089,7 @@ function openInput(select_event, buttonSelect) {
 		l.style.color = "rgb(3, 3, 3)"
 	}
 	else {
-		t.src = "./images/LiquidityProcess.png";
+		t.src = "./client/images/LiquidityProcess.png";
 		e.style.backgroundColor = "#37DD60"
 		e.style.color = "rgb(3, 3, 3)"
 		c.style.backgroundColor = "#37DD60"
