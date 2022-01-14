@@ -41,27 +41,27 @@ const withdrawValue = document.getElementById('withdraw-amount');
 const withdrawButton = document.getElementById('sc-withdraw-button');
 
 //Import Smart Contract Address and ABI from Etherscan
-const employerSmartContractAddress = '0x4885FE8fF7cc386cC4F1d219229C9e700bBA2bb7';
+const employerSmartContractAddress = '0x2e01F180c6b39225702E61aFEbb4a0F0073559bd';
 const employerSmartContractABI = [
 	{
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
-				"name": "employerAddress",
+				"name": "EmployerAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "depositAmount",
+				"name": "DepositAmount",
 				"type": "uint256"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "employerReserveBalance",
+				"name": "EmployerReserveBalance",
 				"type": "uint256"
 			}
 		],
@@ -72,7 +72,7 @@ const employerSmartContractABI = [
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
 				"name": "Sender2Contract",
 				"type": "address"
@@ -97,21 +97,21 @@ const employerSmartContractABI = [
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
-				"name": "employerAddress",
+				"name": "EmployerAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "address",
-				"name": "terminatedEmployeeAddress",
+				"name": "TerminatedEmployeeAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "terminationCount",
+				"name": "TerminationCount",
 				"type": "uint256"
 			},
 			{
@@ -128,16 +128,28 @@ const employerSmartContractABI = [
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
-				"name": "employerAddress",
+				"name": "EmployerAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "employerCount",
+				"name": "EmployerCount",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "BusinessName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "StateId",
+				"type": "string"
 			}
 		],
 		"name": "RegisterNewBusiness",
@@ -147,15 +159,15 @@ const employerSmartContractABI = [
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
-				"name": "claimantAddresses",
+				"name": "ClaimantAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "claimantCount",
+				"name": "ClaimantCount",
 				"type": "uint256"
 			}
 		],
@@ -166,15 +178,15 @@ const employerSmartContractABI = [
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
-				"name": "EmployerAddress",
+				"name": "ClaimantAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "address",
-				"name": "ClaimantAddress",
+				"name": "EmployerAddress",
 				"type": "address"
 			},
 			{
@@ -215,13 +227,7 @@ const employerSmartContractABI = [
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "PayableAddress",
-				"type": "address"
-			},
-			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
 				"name": "SenderAddress",
 				"type": "address"
@@ -277,9 +283,9 @@ const employerSmartContractABI = [
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "weeklyPayAmount",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "string",
@@ -367,9 +373,9 @@ const employerSmartContractABI = [
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "weeklyPayAmount",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "string",
@@ -424,9 +430,9 @@ const employerSmartContractABI = [
 				"type": "address"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "weeklyPayAmount",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "string",
@@ -536,9 +542,9 @@ const employerSmartContractABI = [
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "address",
@@ -632,6 +638,19 @@ const employerSmartContractABI = [
 	},
 	{
 		"inputs": [],
+		"name": "getRegistered",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getStateBalance",
 		"outputs": [
 			{
@@ -669,9 +688,9 @@ const employerSmartContractABI = [
 				"type": "address"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "string",
@@ -738,13 +757,7 @@ const employerSmartContractABI = [
 			}
 		],
 		"name": "payClaim",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
@@ -819,9 +832,9 @@ const employerSmartContractABI = [
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "weeklyAmount",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "string",
@@ -867,6 +880,57 @@ const employerSmartContractABI = [
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "setBalance",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "claimantAddress",
+				"type": "address"
+			}
+		],
+		"name": "setClaimantInList",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "setRegistered",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "employerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "setReserveBalance",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -891,13 +955,13 @@ const employerSmartContractABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "address payable",
+				"internalType": "address",
 				"name": "_to",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_amount",
+				"name": "withdrawAmt",
 				"type": "uint256"
 			}
 		],
