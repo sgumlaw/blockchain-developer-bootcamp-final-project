@@ -1005,13 +1005,12 @@ terminationBtn.onclick = async() => {
 }
 
 depositBtn.onclick = async() => {
-	const depositAmt = web3.utils.toWei(depositAmount.value, 'ether');
 	await employerProcess.methods
 		.deposit()
 		.send({
 			from: ethereum.selectedAddress,
 			to: employerSmartContractAddress,
-			value: depositAmt
+			value: depositAmount.value
 		})
 	let amount = await web3.eth.getBalance(address);
 	amount = await web3.utils.fromWei(amount, "ether");
@@ -1023,10 +1022,11 @@ eligibilityBtn.onclick = async() => {
 	const claimWage = claimantWage.value; 
 	const employerName = claimantEmployer.value;
 	employerAcct = employerWallet.value;
+	let amountInEth = await web3.utils.fromWei(amount, "ether");
 	payeeName.innerText = claimName;
 	payeeEmployer.innerHTML = employerName;
 	payorWallet.innerHTML = employerAcct;
-	weeklyWage.innerHTML = claimWage;
+	weeklyWage.innerHTML = amountInEth;
 	withdrawName.innerHTML = claimName;
 	withdrawWallet.innerHTML = ethereum.selectedAddress;
 
@@ -1036,18 +1036,15 @@ eligibilityBtn.onclick = async() => {
 }
 
 paymentButton.onclick = async() => {
-	const claimWage = web3.utils.toWei(claimantWage.value, 'ether'); 
-
 	await employerProcess.methods
-		.payClaim(employerAcct, claimWage)
+		.payClaim(employerAcct, claimantWage.value)
 		.send({ from: ethereum.selectedAddress, });
 }
 
 withdrawButton.onclick = async() => {
-	const withdrawRequest = web3.utils.toWei(withdrawValue.value, 'ether'); 
 	
 	await employerProcess.methods
-		.withdraw(ethereum.selectedAddress, withdrawRequest)
+		.withdraw(ethereum.selectedAddress, withdrawValue.value)
 		.send({ from: ethereum.selectedAddress, });
 	
 	let amount = await web3.eth.getBalance(address);
