@@ -1069,13 +1069,15 @@ terminationBtn.onclick = async() => {
 }
 
 depositBtn.onclick = async() => {
+	const depositAmt = web3.utils.toWei(depositAmount.value, 'wei');
 	await employerProcess.methods
 		.deposit()
 		.send({
 			from: ethereum.selectedAddress,
 			to: employerSmartContractAddress,
-			value: depositAmount.value
+			value: depositAmt
 		})
+	console.log("depositAmt: ", depositAmt);
 	let amount = await web3.eth.getBalance(address);
 	amount = await web3.utils.fromWei(amount, "ether");
 	mmBalance.innerHTML = amount;
