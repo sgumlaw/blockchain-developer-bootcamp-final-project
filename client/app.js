@@ -41,7 +41,7 @@ const withdrawValue = document.getElementById('withdraw-amount');
 const withdrawButton = document.getElementById('sc-withdraw-button');
 
 //Import Smart Contract Address and ABI from Etherscan
-const employerSmartContractAddress = '0x69097006c0eC7b6A86b94eEb781d7EEc57723851';
+const employerSmartContractAddress = '0x4885FE8fF7cc386cC4F1d219229C9e700bBA2bb7';
 const employerSmartContractABI = [
 	{
 		"anonymous": false,
