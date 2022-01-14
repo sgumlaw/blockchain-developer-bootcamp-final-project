@@ -35,7 +35,7 @@ contract Employer {
     uint256 employeeId;
     string name;
     address payable employeeAddress;
-    uint256 weeklyPayAmount;
+    string weeklyPayAmount;
     string terminationDate;
     Reason reason; 
   }
@@ -44,7 +44,7 @@ contract Employer {
     uint256 claimantId;
     address payable claimantAddress;
     string name;
-    uint256 weeklyPayAmount;
+    string weeklyPayAmount;
     string businessName;
     address businessAddress;
     Payment[] payments;
@@ -115,7 +115,7 @@ contract Employer {
     return true; 
   }
     //EMPLOYER RECORDS EMPLOYEE TERMINATION
-  function addTerminatedEmployee(address payable employeeAddress, string memory employeeName, uint256 weeklyPayAmount, string memory terminationDate, uint selection) public returns (bool){
+  function addTerminatedEmployee(address payable employeeAddress, string memory employeeName, string memory weeklyPayAmount, string memory terminationDate, uint selection) public returns (bool){
     address _employerAddress = msg.sender;
     terminationCount += 1;
     Business storage business = employers[_employerAddress];
@@ -149,7 +149,7 @@ contract Employer {
     return balances[msg.sender];
   }
     //CLAIMANT REGISTERS WITH SC AND FILES CLAIM IF ELIGIBLE
-  function registerNewClaimant(string memory name, uint256 weeklyAmount, string memory businessName, address businessAddress) public isEligible(businessAddress) returns(bool) {
+  function registerNewClaimant(string memory name, string memory weeklyAmount, string memory businessName, address businessAddress) public isEligible(businessAddress) returns(bool) {
     claimantCount += 1;
     address _claimantAddress = msg.sender;
 
@@ -261,7 +261,7 @@ contract Employer {
     return msg.sender.balance;
   }
 
-  function getTerminatedEmployee(address _address) view public returns(uint256 , string memory, address, uint256, string memory, Reason) {
+  function getTerminatedEmployee(address _address) view public returns(uint256 , string memory, address, string memory, string memory, Reason) {
     Employee storage employee = employees[_address];
     return (employee.employeeId, employee.name, employee.employeeAddress, employee.weeklyPayAmount, employee.terminationDate, employee.reason);
   }
@@ -275,7 +275,7 @@ contract Employer {
       return term_eligibility[employerAddress][claimantAddress];
   }
 
-  function getClaimant(address claimantAddress) view public returns (uint256, address, string memory, uint256, address) {
+  function getClaimant(address claimantAddress) view public returns (uint256, address, string memory, string memory, address) {
     Claimant storage claimant = claimants[claimantAddress];
     return (claimant.claimantId, claimant.claimantAddress, claimant.name, claimant.weeklyPayAmount, claimant.businessAddress);
   }

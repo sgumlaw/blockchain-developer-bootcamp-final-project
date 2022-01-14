@@ -995,11 +995,10 @@ busRegisterBtn.onclick = async() => {
 terminationBtn.onclick = async() => {
 	const terminationWallet = employeeWallet.value; 
 	const terminationName = employeeName.value;
-	let terminationWage = employeeWage.value;
+	const terminationWage = employeeWage.value;
 	const terminationDate = displayDate.value;
 	const terminationReason = termReason.value;
-	terminationWage = await web3.utils.fromWei(terminationWage, "ether");
-
+	
 	await employerProcess.methods
 		.addTerminatedEmployee(terminationWallet, terminationName, terminationWage, terminationDate, terminationReason)
 		.send({from: ethereum.selectedAddress}); 
