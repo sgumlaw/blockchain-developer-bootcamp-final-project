@@ -995,10 +995,11 @@ busRegisterBtn.onclick = async() => {
 terminationBtn.onclick = async() => {
 	const terminationWallet = employeeWallet.value; 
 	const terminationName = employeeName.value;
-	const terminationWage = employeeWage.value;
+	let terminationWage = employeeWage.value;
 	const terminationDate = displayDate.value;
 	const terminationReason = termReason.value;
-	
+	terminationWage = await web3.utils.fromWei(terminationWage, "ether");
+
 	await employerProcess.methods
 		.addTerminatedEmployee(terminationWallet, terminationName, terminationWage, terminationDate, terminationReason)
 		.send({from: ethereum.selectedAddress}); 
@@ -1022,7 +1023,9 @@ eligibilityBtn.onclick = async() => {
 	const claimWage = claimantWage.value; 
 	const employerName = claimantEmployer.value;
 	employerAcct = employerWallet.value;
-	let amountInEth = await web3.utils.fromWei(amount, "ether");
+
+	let amountInEth = await web3.utils.fromWei(claimWage, "ether");
+
 	payeeName.innerText = claimName;
 	payeeEmployer.innerHTML = employerName;
 	payorWallet.innerHTML = employerAcct;
