@@ -1104,18 +1104,19 @@ eligibilityBtn.onclick = async() => {
 }
 
 paymentButton.onclick = async() => {
+	const paymentAmt = web3.utils.toWei(claimantWage.value, 'wei');
 	await employerProcess.methods
-		.payClaim(employerAcct, claimantWage.value)
+		.payClaim(employerAcct, paymentAmt)
 		.send({ from: ethereum.selectedAddress, });
 }
 
 withdrawButton.onclick = async() => {
-	
+	const withdrawAmt = web3.utils.toWei(withdrawValue.value, 'wei');
 	await employerProcess.methods
-		.withdraw(ethereum.selectedAddress, withdrawValue.value)
+		.withdraw(ethereum.selectedAddress, withdrawAmt)
 		.send({ from: ethereum.selectedAddress, });
 	
-	let amount = await web3.eth.getBalance(address);
+	let amount = await web3.eth.getBalance(ethereum.selectedAddress);
 	amount = await web3.utils.fromWei(amount, "ether");
 	mmBalance.innerHTML = amount;
 }
