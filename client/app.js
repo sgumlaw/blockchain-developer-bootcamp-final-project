@@ -1049,7 +1049,6 @@ const employerProcess = new web3.eth.Contract(employerSmartContractABI, employer
 busRegisterBtn.onclick = async() => {
 	const bizName = busName.value; 
 	const stateID = busStateId.value;
-	const walletAdd = ethereum.selectedAddress;
 
 	await employerProcess.methods
 		.registerNewBusiness(bizName, stateID)
@@ -1112,12 +1111,17 @@ paymentButton.onclick = async() => {
 
 withdrawButton.onclick = async() => {
 	const withdrawAmt = web3.utils.toWei(withdrawValue.value, 'wei');
+	console.log("withdrawAmt: ", withdrawAmt);
+	const claimantBalanceBefore = await web3.eth.getBalance(ethereum.selectedAddress);
+	console.log("claimantBalanceBefore: ", claimantBalanceBefore);
+
 	await employerProcess.methods
 		.withdraw(ethereum.selectedAddress, withdrawAmt)
 		.send({ from: ethereum.selectedAddress, });
 	
 	let amount = await web3.eth.getBalance(ethereum.selectedAddress);
 	amount = await web3.utils.fromWei(amount, "ether");
+	console.log("claimantBalanceAfter: ", amount);
 	mmBalance.innerHTML = amount;
 }
 

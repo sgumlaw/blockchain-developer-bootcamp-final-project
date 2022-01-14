@@ -2,7 +2,7 @@
 ## A Simple Solution to a Multi-Billion dollar problem. 
 
 ### Deployed Front-End URL: 
-
+https://serene-ritchie-67cf45.netlify.app/
 
 ### Steps to run this project locally:
 - `truffle test`
@@ -36,87 +36,88 @@
 - `contracts`: Smart Contract Code
 - `migrations`: Migration files for deploying contracts in `contracts` directory.
 - `test`: JS Tests for smart contracts
-- `images`: Images used in Front-end
+- `root`: index.html
 
 #### Smart Contract Structure: 
- **Three Contracts**
-    1. Employer
-    2. Claimant - to be implemented later
-    3. Liquidity Provider - to be implemented later
+**Three Contracts**
+1. Employer
+2. Claimant - to be implemented later
+3. Liquidity Provider - to be implemented later
    
-  **Employer Contract has the following functions:**
-    1. Register a new Employer
-        a. Employer name
-        b. Employer id
-        c. Employer wallet address
-        d. Employer reserve balance
-        e. Employer tax rate
-        f. Employer state id
-        g. Employee [] employers
-    2. Get an existing Employer -> what is the most effective way to store 
-        a. mapping address => Employer employers
-    3. Update an existing Employer
-    4. Add a Terminated Employee
-        a. Employee name
-        b. Employee wallet address
-        c. Employee termination date
-        d. Employee termination reason
-        e. Employee weekly pay amount
-        f. Employee [] employers
-    5. Get list of Terminated Employees by Employer
-        a. provide employee wallet address as input to retrieve individual claimant
-* Claimant Contract has the following functions: 
-    1. Register a new Claimant and and Initiate Claim Subject to Eligibility
-        *Objective: Verify that claimant address is in employer's termination array and meet eligibility conditions;
-        a. Claimant name
-        b. Claimant id
-        c. Claimant wallet address
-        d. Claimant balance
-    2. Get an existing Claimant
-    3. Update an existing Claimant
-    4. Pay a Claim
-        *Objective: Move funds from employer's smart contract balance to claimant's smart contract balance;
-        a. Claimant employer name 
-        b. Claimant employer wallet address
-        c. Claimant hire date
-        d. Claimant termination date
-        e. Claimant termination reason
-        f. Claimant weekly pay amount
-        g. Compare Claimant address to Employer's terminated employee array
-        h. Push Claimant wallet address to Employer array
-    5. Withdraw Funds
-        *Objective: Enable claimants to withdraw funds from their smart contract balance;
-    6. Get list of Claims by Claimant 
-        a. mapping Claims to claimants []
-    7. Check Eligibility or set up as modifier
-        a. Import Employer.sol
-        b. Check employer_terminations array to verify whether employee address is present. 
-    8. Request Weekly Pay
-        a. Payment struct
-            i. Payment number
-            ii. Payment amount
-            iii. Payment date
-            iv. Employer wallet address
-        b. Push payment to array
-    9.  Get list of Weekly Pay
-        a. mapping Payment to claimants []
+**Employer Functions:**
+ 1. Register a new Employer
+     a. Employer name
+     b. Employer id
+     c. Employer wallet address
+     d. Employer reserve balance
+     e. Employer tax rate
+     f. Employer state id
+     g. Employee [] employers
+ 2. Get an existing Employer -> what is the most effective way to store 
+     a. mapping address => Employer employers
+ 3. Update an existing Employer
+ 4. Add a Terminated Employee
+     a. Employee name
+     b. Employee wallet address
+     c. Employee termination date
+     d. Employee termination reason
+     e. Employee weekly pay amount
+     f. Employee [] employers
+ 5. Get list of Terminated Employees by Employer
+     a. provide employee wallet address as input to retrieve individual claimant
+**Claimant Functions:** 
+ 1. Register a new Claimant and and Initiate Claim Subject to Eligibility
+     *Objective: Verify that claimant address is in employer's termination array and meet eligibility conditions;
+     a. Claimant name
+     b. Claimant id
+     c. Claimant wallet address
+     d. Claimant balance
+ 2. Get an existing Claimant
+ 3. Update an existing Claimant
+ 4. Pay a Claim
+     *Objective: Move funds from employer's smart contract balance to claimant's smart contract balance;
+     a. Claimant employer name 
+     b. Claimant employer wallet address
+     c. Claimant hire date
+     d. Claimant termination date
+     e. Claimant termination reason
+     f. Claimant weekly pay amount
+     g. Compare Claimant address to Employer's terminated employee array
+     h. Push Claimant wallet address to Employer array
+ 5. Withdraw Funds
+     *Objective: Enable claimants to withdraw funds from their smart contract balance;
+ 6. Get list of Claims by Claimant 
+     a. mapping Claims to claimants []
+ 7. Check Eligibility or set up as modifier
+     a. Import Employer.sol
+     b. Check employer_terminations array to verify whether employee address is present. 
+ 8. Request Weekly Pay
+     a. Payment struct
+         i. Payment number
+         ii. Payment amount
+         iii. Payment date
+         iv. Employer wallet address
+     b. Push payment to array
+ 9.  Get list of Weekly Pay
+     a. mapping Payment to claimants []
 
 
-* User Interface
-    1. Set up two buttons to decide which contract to interact with
-        a. Employer
-        b. Claimant
-    2. Set up Employer page 
-        a. Register as a new empployer
-        b. Add terminated employee
-    3. Set up Claimant page
-        a. Check Eligibility and Register as new claimant 
-            -add modifier to evaluate if msg.sender is in employer term-list 
-        b. File a claim
-        c. Request weekly payment
+**User Interface**
+1. Set up two buttons to decide which contract to interact with
+    a. Employer
+    b. Claimant
+2. Set up Employer page 
+    a. Register as a new empployer
+    b. Add terminated employee
+3. Set up Claimant page
+    a. Check Eligibility and Register as new claimant 
+        -add modifier to evaluate if msg.sender is in employer term-list 
+    b. File a claim
+    c. Request weekly payment
 
 ### TODOS
-    1.  Set up Liquidity Provider Smart Contract
-    2.  Develop Query tabs for employer/claimant transparency
-    3.  Incorporate imported security features
-    4.  
+ 1.  Add more checks and balances on functions
+ 2.  Set up Liquidity Provider Smart Contract
+ 3.  Develop Query tabs for employer/claimant transparency
+ 4.  Incorporate imported security features including role based access
+ 5.  
