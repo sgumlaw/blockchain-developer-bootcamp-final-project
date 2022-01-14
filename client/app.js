@@ -1078,7 +1078,7 @@ depositBtn.onclick = async() => {
 			value: depositAmt
 		})
 	console.log("depositAmt: ", depositAmt);
-	let amount = await web3.eth.getBalance(address);
+	let amount = await web3.eth.getBalance(ethereum.selectedAddress);
 	amount = await web3.utils.fromWei(amount, "ether");
 	mmBalance.innerHTML = amount;
 }
