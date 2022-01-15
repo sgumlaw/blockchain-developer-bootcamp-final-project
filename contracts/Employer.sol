@@ -181,21 +181,7 @@ contract Employer {
     emit Transfer(msg.sender, employerAddress, employerBalanceBefore, claimantBalanceBefore, paymentAmount, employerBalanceAfter, claimantBalanceAfter);
     //return balances[employerAddress];
   }
-  // function payClaim(address employerAddress, uint256 paymentAmount) public returns (bool){
-  //   uint256 employerBalanceBefore = balances[employerAddress];
-  //   uint256 claimantBalanceBefore = balances[msg.sender];
-    
-  //   Business storage business = employers[employerAddress];
-  //   business.reserveBalance -= paymentAmount;
-  //   balances[employerAddress] -= paymentAmount;
-  //   balances[msg.sender] += paymentAmount;
 
-  //   uint256 employerBalanceAfter = balances[employerAddress];
-  //   uint256 claimantBalanceAfter = balances[msg.sender];
-    
-  //   emit Transfer(msg.sender, employerAddress, employerBalanceBefore, claimantBalanceBefore, paymentAmount, employerBalanceAfter, claimantBalanceAfter);
-  //   return true;
-  // }
     //CLAIMANT REQUESTS WITHDRAW FROM SC
   function withdraw(address _to, uint256 withdrawAmt) public { 
     uint256 accountWalletBalanceBefore = msg.sender.balance; 

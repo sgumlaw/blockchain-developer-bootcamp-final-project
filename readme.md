@@ -4,18 +4,34 @@
 ### Deployed Front-End URL: 
 https://serene-ritchie-67cf45.netlify.app/
 
-### Steps to run this project locally:
-- `truffle test`
-- Send ETH to local wallet
-- `cd client && npm start`
-- Open local ui from `http://localhost:3000`
-- Make sure your Metamask localhost network is in port `7545`
+### Steps to test project using truffle:
+- Clone code into local directory
+- Run `npm install` to install dependencies
+- Run `ganache-cli` to spin up local blockchain
+  - Make sure your Metamask localhost network is in port `8545`
+- Run `truffle test` to execute 7 tests in the test directory
+  
+### Steps to test project manually using public (Ropsten) testnet:
+- Requirements: two Ropsten wallet accounts
+  - First account = employer
+  - Second account = claimant
+- Open user interface with live server
+- Connect to employer wallet (account#1)
+- Select `Employer` tab to
+  - Register
+  - Record employee termination
+  - Deposit funds 
+- Refresh web page to connect with different account
+- Connect to claimant wallet (account#2)
+  - Register and check eligibility
+  - Request payment
+  - Withdraw funds
 
 ### Screencast link
-
+https://www.loom.com/share/30cf632b18a548a4aa02aa9833dc5046
 
 ### Public Ethereum wallet for certification:
-
+`0x5e045BfA23213808b488207597f40FAb50190D13`
 ### Project Description
 
 **Objective**
@@ -46,78 +62,49 @@ https://serene-ritchie-67cf45.netlify.app/
    
 **Employer Functions:**
  1. Register a new Employer
-     a. Employer name
-     b. Employer id
-     c. Employer wallet address
-     d. Employer reserve balance
-     e. Employer tax rate
-     f. Employer state id
-     g. Employee [] employers
- 2. Get an existing Employer -> what is the most effective way to store 
-     a. mapping address => Employer employers
- 3. Update an existing Employer
- 4. Add a Terminated Employee
-     a. Employee name
-     b. Employee wallet address
-     c. Employee termination date
-     d. Employee termination reason
-     e. Employee weekly pay amount
-     f. Employee [] employers
- 5. Get list of Terminated Employees by Employer
-     a. provide employee wallet address as input to retrieve individual claimant
+    a. Employer name
+    b. Employer id
+    c. Employer wallet address
+    d. Employer reserve balance
+    e. Employer tax rate
+    f. Employer state id
+    g. Employee [] employers
+ 2. Update an existing Employer - to be implemented later
+ 3. Add a Terminated Employee
+    a. Employee name
+    b. Employee wallet address
+    c. Employee termination date
+    d. Employee termination reason
+    e. Employee weekly pay amount
+ 4. Deposit funds from wallet address to smart contract address
 **Claimant Functions:** 
- 1. Register a new Claimant and and Initiate Claim Subject to Eligibility
-     *Objective: Verify that claimant address is in employer's termination array and meet eligibility conditions;
+1. Register as new Claimant - verify that claimant address is in employer's termination array and meets the eligibility requirements;
      a. Claimant name
      b. Claimant id
      c. Claimant wallet address
      d. Claimant balance
- 2. Get an existing Claimant
- 3. Update an existing Claimant
- 4. Pay a Claim
-     *Objective: Move funds from employer's smart contract balance to claimant's smart contract balance;
-     a. Claimant employer name 
-     b. Claimant employer wallet address
-     c. Claimant hire date
-     d. Claimant termination date
-     e. Claimant termination reason
-     f. Claimant weekly pay amount
-     g. Compare Claimant address to Employer's terminated employee array
-     h. Push Claimant wallet address to Employer array
- 5. Withdraw Funds
-     *Objective: Enable claimants to withdraw funds from their smart contract balance;
- 6. Get list of Claims by Claimant 
-     a. mapping Claims to claimants []
- 7. Check Eligibility or set up as modifier
-     a. Import Employer.sol
-     b. Check employer_terminations array to verify whether employee address is present. 
- 8. Request Weekly Pay
-     a. Payment struct
-         i. Payment number
-         ii. Payment amount
-         iii. Payment date
-         iv. Employer wallet address
-     b. Push payment to array
- 9.  Get list of Weekly Pay
-     a. mapping Payment to claimants []
-
+2. Update an existing Claimant - to be implemented later
+3. File Claim/Request Payment - Move funds from employer's smart contract balance to claimant's smart contract balance
+    a. Claimant employer name 
+    b. Claimant employer wallet address
+    c. Claimant hire date
+    d. Claimant termination date
+    e. Claimant termination reason
+    f. Claimant weekly pay amount
+    g. Compare Claimant address to Employer's terminated employee array
+    h. Push Claimant wallet address to Employer array
+4. Withdraw Funds - enable claimants to withdraw funds from their smart contract balance;
 
 **User Interface**
-1. Set up two buttons to decide which contract to interact with
-    a. Employer
-    b. Claimant
-2. Set up Employer page 
-    a. Register as a new empployer
-    b. Add terminated employee
-3. Set up Claimant page
-    a. Check Eligibility and Register as new claimant 
-        -add modifier to evaluate if msg.sender is in employer term-list 
-    b. File a claim
-    c. Request weekly payment
+1. MetaMask Connection
+2. Employer Tab 
+3. Claimant Tab
+4. Liquidity Provider Tab - to be implemented later
 
 ### TODOS
  1.  Add more checks and balances on functions
- 2.  Set up Liquidity Provider Smart Contract
- 3.  Develop Query tabs for employer/claimant transparency
- 4.  Incorporate imported security features including role based access
- 5.  
+ 2.  Refactor current contract into two contracts for employer and claimant
+ 3.  Develop Query/Read tabs for employer/claimant transparency
+ 4.  Set up Liquidity Provider Smart Contract and build out functionality
+ 5.  Incorporate imported security features including role based access and pausable from open zepplin
+ 6.  

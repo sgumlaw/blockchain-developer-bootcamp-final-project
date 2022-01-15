@@ -153,30 +153,22 @@ contract("Employer", function (accounts) {
        let stateId = results[3];
        let reserveBalance = results[4];
        let taxRate = results[5];
-       console.log("Business Id: ", businessId);
-       console.log("Business Address: ", employerAddress);
-       console.log("Business Name: ", businessName);
-       console.log("Tax Rate: ", taxRate);
-       console.log("State Id: ", stateId);
-       console.log("Reserve Balance: ", reserveBalance);
        
       await instance.setClaimantInList(claimant1, {from: business});
       
       try {
-        await instance.registerNewClaimant("Roy Jones", 1000, "ABC Company", business, { from: claimant1 });
+        await instance.registerNewClaimant("Roy Jones", "1000", "ABC Company", business, { from: claimant1 });
       } catch(err) { 
         console.log(err);
       }
 
       const claimantResult = await instance.getClaimant(claimant1);
-      console.log("Claimant Result: ", claimantResult)
      
       let claimID = claimantResult[0].toNumber()
-      let weeklyPay = claimantResult[3].toNumber()
-      console.log("Claimant Pay: ", weeklyPay)
-
+      let weeklyPay = claimantResult[3]
+    
       assert.equal(claimID, 1, `${claimID} is not 1`);
-      assert.equal(weeklyPay, 1000, `${weeklyPay} is not 1000`);
+      assert.equal(weeklyPay, "1000", `${weeklyPay} is not 1000`);
     })
   });
 
@@ -189,13 +181,6 @@ contract("Employer", function (accounts) {
       const transferEther = web3.utils.toWei('3', 'ether');
       console.log("transferEther: ", transferEther);
       await instance.setBalance(employerBalance, {from: business});
-
-      //const beforeStateClaimant = web3.utils.toBN(await instance.getStateBalance({ from: claimant1 }));
-      //beforeStateClaimant = web3.utils.toBN(beforeStateClaimant);
-      //console.log("beforeStateClaimant: ", beforeStateClaimant.toString());
-      //let beforeStateEmployer = web3.utils.toBN(await instance.getStateBalance({ from: business }));
-      //beforeStateEmployer = web3.utils.toBN(beforeStateEmployer);
-      //console.log("beforeStateEmployer: ", beforeStateEmployer.toString());
 
       let beforeStateEmployer = await instance.getStateBalance({ from: business });
       beforeStateEmployer = beforeStateEmployer.toString();
@@ -215,23 +200,6 @@ contract("Employer", function (accounts) {
       afterStateEmployer = afterStateEmployer.toString()
       let afterStateClaimant = await instance.getStateBalance({ from: claimant1 });
       afterStateClaimant = afterStateClaimant.toString();
-      console.log("afterStateEmployer: ", afterStateEmployer);
-      console.log("afterStateClaimant: ", afterStateClaimant);
-      //let results = await instance.getEmployer(business);
-      //let reserveBalance = results[4];
-      //console.log("Reserve Balance: ", reserveBalance.toString());
-      // let afterStateClaimant = await instance.getStateBalance({ from: claimant1 });
-      // afterStateClaimant = web3.utils.toBN(afterStateClaimant);
-      // console.log("afterStateClaimant: ", afterStateClaimant.toString());
-      // let afterStateEmployer = await instance.getStateBalance({ from: business });
-      // afterStateEmployer = web3.utils.toBN(afterStateEmployer);
-      // console.log("afterStateEmployer: ", afterStateEmployer.toString());
-      
-
-      // const claimantStateChange = (afterStateClaimant - beforeStateClaimant);
-      // const employerStateChange = (beforeStateEmployer - afterStateEmployer);
-      //const expectedGas = walletChange - stateChange;
-      //walletChange = walletChange - expectedGas
 
       assert.equal(afterStateEmployer, revEmployerBalance, `${afterStateEmployer} is not 3 Eth`);
       assert.equal(afterStateClaimant, transferEther, `${afterStateClaimant} is not 3 Eth`);
@@ -239,46 +207,6 @@ contract("Employer", function (accounts) {
 
     });
   });
-  // describe("Terminated Employee Requests Payment From Employer's Smart Contract Balance", () => {
-  //   it("should increase the balance of claimant's smart contract and decrease the balance of the employer's smart contract by the amount of the payment.", 
-  //   async () => { 
-
-  //     const employerBalance = web3.utils.toBN(web3.utils.toWei('9', 'ether'));
-  //     const transferEther = web3.utils.toWei('3', 'ether');
-  //     console.log("transferEther: ", transferEther);
-  //     await instance.setBalance(employerBalance, {from: business});
-
-  //     const beforeStateClaimant = web3.utils.toBN(await instance.getStateBalance({ from: claimant1 }));
-  //     //beforeStateClaimant = web3.utils.toBN(beforeStateClaimant);
-  //     console.log("beforeStateClaimant: ", beforeStateClaimant.toString());
-  //     let beforeStateEmployer = web3.utils.toBN(await instance.getStateBalance({ from: business }));
-  //     //beforeStateEmployer = web3.utils.toBN(beforeStateEmployer);
-  //     console.log("beforeStateEmployer: ", beforeStateEmployer.toString());
-      
-  //     try {
-  //       await instance.payClaim(business, transferEther, {from: claimant1});
-  //     } catch(err) { 
-  //       console.log(err);
-  //     }
-
-  //     let afterStateClaimant = await instance.getStateBalance({ from: claimant1 });
-  //     afterStateClaimant = web3.utils.toBN(afterStateClaimant);
-  //     console.log("afterStateClaimant: ", afterStateClaimant.toString());
-  //     let afterStateEmployer = await instance.getStateBalance({ from: business });
-  //     afterStateEmployer = web3.utils.toBN(afterStateEmployer);
-  //     console.log("afterStateEmployer: ", afterStateEmployer.toString());
-      
-
-  //     const claimantStateChange = (afterStateClaimant - beforeStateClaimant);
-  //     const employerStateChange = (beforeStateEmployer - afterStateEmployer);
-  //     //const expectedGas = walletChange - stateChange;
-  //     //walletChange = walletChange - expectedGas
-
-  //     assert.equal(claimantStateChange, transferEther, `${claimantStateChange} is not 3 Eth`);
-  //     assert.equal(employerStateChange, transferEther, `${employerStateChange} is not 3 Eth`);
-
-  //   });
-  // });
 
   describe("Terminated Employee Withdraws Up To Avaiable Amount From Their Smart Contract Balance", () => {
     it("should increase the balance of claimant's wallet address and decreases the balance of their smart contract balance by the amount of the withdraw.", 
