@@ -62,38 +62,38 @@ To harness blockchain technology to streamline the process for eligible terminat
    
 **Employer Functions:**
 1. Register a new Employer
-    a. Employer name
-    b. Employer id
-    c. Employer wallet address
-    d. Employer reserve balance
-    e. Employer tax rate
-    f. Employer state id
-    g. Employee [] employers
+a. Employer name
+b. Employer id
+c. Employer wallet address
+d. Employer reserve balance
+e. Employer tax rate
+f. Employer state id
+g. Employee [] employers
 2. Update an existing Employer - to be implemented later
 3. Add a Terminated Employee
-    a. Employee name
-    b. Employee wallet address
-    c. Employee termination date
-    d. Employee termination reason
-    e. Employee weekly pay amount
+a. Employee name
+b. Employee wallet address
+c. Employee termination date
+d. Employee termination reason
+e. Employee weekly pay amount
 4. Deposit funds from wallet address to smart contract address
 
 **Claimant Functions:** 
 1. Register as new Claimant - verify that claimant address is in employer's termination array and meets the eligibility requirements;
-    a. Claimant name
-    b. Claimant id
-    c. Claimant wallet address
-    d. Claimant balance
+a. Claimant name
+b. Claimant id
+c. Claimant wallet address
+d. Claimant balance
 2. Update an existing Claimant - to be implemented later
 3. File Claim/Request Payment - Move funds from employer's smart contract balance to claimant's smart contract balance
-    a. Claimant employer name 
-    b. Claimant employer wallet address
-    c. Claimant hire date
-    d. Claimant termination date
-    e. Claimant termination reason
-    f. Claimant weekly pay amount
-    g. Compare Claimant address to Employer's terminated employee array
-    h. Push Claimant wallet address to Employer array
+a. Claimant employer name 
+b. Claimant employer wallet address
+c. Claimant hire date
+d. Claimant termination date
+e. Claimant termination reason
+f. Claimant weekly pay amount
+g. Compare Claimant address to Employer's terminated employee array
+h. Push Claimant wallet address to Employer array
 4. Withdraw Funds - enable claimants to withdraw funds from their smart contract balance;
 
 **User Interface**
