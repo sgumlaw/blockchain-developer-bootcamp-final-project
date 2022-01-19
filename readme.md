@@ -42,7 +42,7 @@ https://www.loom.com/share/30cf632b18a548a4aa02aa9833dc5046
 - For liquidity providers: to provide investment opportunities 
     
 #### Problem
-According to statistics from the Department of Labor Semiannual Report to Congress, in 2020, unemployment claims payments were estimated at $872 billion with north of $87 billion being improper, the majority of which due to fraud (https://www.oig.dol.gov/public/semiannuals/86.pdf). While this problem was exasaperated by the pandemic, the problem revealed the risk of employing inefficient procedures and technology. In fact, the Office of Inspector General identified `Significant Concerns` in their report to Congress, with the **"Deploying UI Benefits Expeditiously While Reducing Improper Payments"** being their top concern. The Office of Inspector General stated that improper payments have been north of 10% for 14 out of the last 18 years. In addition to the improper payments, employer businesses lack the transparency into their reserve accounts and the claim payments being made. This lack of transparency harms employer busiensses from estimating the magnitude of their tax premium increases. In fact, employer businesses often don't know receive correspondence on tax increases until a year later. And as many businesses were shuttered during the pandemic, the government was left on the hook for negative reserve balances of these closed businesses; no longer being able to attribute the tax increases to the responsible party. 
+According to statistics from the Department of Labor Semiannual Report to Congress, in 2020, unemployment claims payments were estimated at $872 billion with north of $87 billion being improper, the majority of which due to fraud (https://www.oig.dol.gov/public/semiannuals/86.pdf). While this problem was exasaperated by the pandemic, the problem revealed the risk of employing inefficient procedures and technology. In fact, the Office of Inspector General identified `Significant Concerns` in their report to Congress, with the **"Deploying UI Benefits Expeditiously While Reducing Improper Payments"** being their top concern. The Office of Inspector General stated that improper payments have been north of 10% for 14 out of the last 18 years. The broken processes have emboldened criminal organizations to exploit the system. In addition to the improper payments, employer businesses lack the transparency into their reserve accounts and the claim payments being made. This lack of transparency harms employer businesses from estimating the magnitude of their tax premium increases. In fact, employer businesses often don't receive correspondence on tax increases until a year later. And as many businesses were shuttered during the pandemic, the government was left on the hook for negative reserve balances of these closed businesses; no longer being able to attribute the tax increases to the responsible party. 
 
 #### Solution
 To harness blockchain technology to streamline the process for eligible terminated employees to file and receive unemployment payments. The blockchain provides an immutable environment that enables the recording of a few critical events that dictate the eligibility, calculation and payment of claims. By utilizing this environment, employers and claimants can transact directly in a trustless manner. Employers can eliminate fraud, while gaining transparency into their reserves balances and activity. Claimants can receive their unemployment benefits faster in their period of need. State governments and federal government can reduce losses and expenditures, increase cash flows and provide a more competitive environment for the businesses in their jurisdictions. Eventually, liquidity providers can access investment opportunities to provide liquidity pools for employers to tap when their reserves go negative.
@@ -103,9 +103,10 @@ h. Push Claimant wallet address to Employer array
 4. Liquidity Provider Tab - to be implemented later
 
 ### TODOS
- 1.  Add more checks and balances on functions
- 2.  Refactor current contract into two contracts for employer and claimant
- 3.  Develop Query/Read tabs for employer/claimant transparency
+ 1.  Perform risk assessment of application from employer, claimant, and liquidity provider perspectives; "What could go wrong?"
+ 2.  Identify and add more checks and balances on functions to mitigate these risks
+ 3.  Refactor current contract into two contracts for employer and claimant
  4.  Set up Liquidity Provider Smart Contract and build out functionality
- 5.  Incorporate imported security features including role based access and pausable from open zepplin
- 6.  
+ 5.  Develop Query/Read tabs for employer/claimant transparency
+ 6.  Incorporate imported security features including role based access and pausable from open zepplin
+ 7.  
