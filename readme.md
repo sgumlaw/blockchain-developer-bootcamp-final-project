@@ -29,6 +29,8 @@ https://serene-ritchie-67cf45.netlify.app/
 
 ### Screencast link
 https://www.loom.com/share/30cf632b18a548a4aa02aa9833dc5046
+### Marketing Video Link
+https://www.dropbox.com/s/tqtrzikwbp4l0nc/FiscalE%20Edi%202t.mp4?dl=0
 
 ### Public Ethereum wallet for certification:
 `0x5e045BfA23213808b488207597f40FAb50190D13`
